@@ -1,0 +1,126 @@
+@import 'tailwindcss';
+
+/*
+ * Design tokens.
+ * Two "ambients" share the same structure so every component works in both:
+ *  - personal: warm, playful — everyday habits and reminders
+ *  - work: cooler, calmer — team projects and professional use
+ * Components only reference the semantic tokens below, never raw colors.
+ */
+:root,
+[data-ambient='personal'] {
+  --bg: #fef9f3;
+  --surface: #ffffff;
+  --surface-muted: #f5eee2;
+  --sidebar: #fffcf7;
+  --border: #eee4d6;
+  --text: #22212e;
+  --text-muted: #666474;
+  --primary: #d1403a;
+  --primary-hover: #b93530;
+  --primary-text: #c23a35;
+  --primary-soft: #fde0da;
+  --on-primary: #ffffff;
+  --ring: #e8605c;
+  --showcase: #fde0da;
+  --deco-1: #ffe9c2;
+  --deco-2: #c8f1ef;
+  --deco-3: #fbd0c8;
+  --danger: #b42318;
+}
+
+[data-ambient='work'] {
+  --bg: #f5f6fa;
+  --surface: #ffffff;
+  --surface-muted: #eceef5;
+  --sidebar: #fbfbfd;
+  --border: #e2e5ee;
+  --text: #1d2233;
+  --text-muted: #5e6479;
+  --primary: #4c57cf;
+  --primary-hover: #3f49b5;
+  --primary-text: #4c57cf;
+  --primary-soft: #e3e6fb;
+  --on-primary: #ffffff;
+  --ring: #7b84e3;
+  --showcase: #e3e6fb;
+  --deco-1: #cdefe7;
+  --deco-2: #ffe7c7;
+  --deco-3: #d5d9f7;
+  --danger: #b42318;
+}
+
+@theme inline {
+  --color-bg: var(--bg);
+  --color-surface: var(--surface);
+  --color-surface-muted: var(--surface-muted);
+  --color-sidebar: var(--sidebar);
+  --color-border: var(--border);
+  --color-text: var(--text);
+  --color-text-muted: var(--text-muted);
+  --color-primary: var(--primary);
+  --color-primary-hover: var(--primary-hover);
+  --color-primary-text: var(--primary-text);
+  --color-primary-soft: var(--primary-soft);
+  --color-on-primary: var(--on-primary);
+  --color-ring: var(--ring);
+  --color-showcase: var(--showcase);
+  --color-deco-1: var(--deco-1);
+  --color-deco-2: var(--deco-2);
+  --color-deco-3: var(--deco-3);
+  --color-danger: var(--danger);
+
+  --font-sans: 'Plus Jakarta Sans', ui-sans-serif, system-ui, sans-serif;
+  --font-display: 'Outfit', ui-sans-serif, system-ui, sans-serif;
+
+  --radius-card: 1.75rem;
+  --shadow-soft: 0 1px 2px rgb(34 33 46 / 0.04), 0 8px 24px rgb(34 33 46 / 0.06);
+}
+
+html {
+  color-scheme: light;
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  transition: background-color 200ms ease;
+}
+
+h1,
+h2,
+h3 {
+  font-family: var(--font-display);
+  letter-spacing: -0.02em;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    transition-duration: 0ms !important;
+    animation-duration: 0ms !important;
+  }
+}
+
+/* Calendar (react-day-picker) themed with Knot tokens */
+.knot-calendar .rdp-root {
+  --rdp-accent-color: var(--primary);
+  --rdp-accent-background-color: var(--primary-soft);
+  --rdp-today-color: var(--primary-text);
+  --rdp-day-height: 40px;
+  --rdp-day-width: 40px;
+  --rdp-day_button-height: 38px;
+  --rdp-day_button-width: 38px;
+  font-size: 0.875rem;
+}
+.knot-calendar .rdp-selected .rdp-day_button {
+  background: var(--primary);
+  color: var(--on-primary);
+}
+.knot-calendar .rdp-caption_label {
+  font-family: var(--font-display);
+  font-size: 1rem;
+}
